@@ -2,7 +2,7 @@
 include 'config.php';
 session_start();
 
-// Kiểm tra quyền đăng nhập
+// Kiểm tra quyền đăng nhập chuẩn xác
 if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
     header("Location: admin_login.php");
     exit;
@@ -66,10 +66,8 @@ $orders = $pdo->query("SELECT * FROM orders ORDER BY created_at DESC")->fetchAll
 // Thống kê doanh thu theo tuần / tháng
 $stats_type = isset($_GET['stats']) ? $_GET['stats'] : 'month';
 if($stats_type == 'week') {
-    // Thống kê 7 ngày gần nhất
     $stmt_stat = $pdo->query("SELECT DATE(created_at) as period, SUM(total_price) as revenue, COUNT(id) as total_orders FROM orders WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY) GROUP BY DATE(created_at)");
 } else {
-    // Thống kê theo tháng trong năm hiện tại
     $stmt_stat = $pdo->query("SELECT DATE_FORMAT(created_at, '%Y-%m') as period, SUM(total_price) as revenue, COUNT(id) as total_orders FROM orders GROUP BY DATE_FORMAT(created_at, '%Y-%m') DESC");
 }
 $stats_data = $stmt_stat->fetchAll(PDO::FETCH_ASSOC);
@@ -200,7 +198,6 @@ $stats_data = $stmt_stat->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= number_format($p['price']) ?> đ</td>
                         <td><?= htmlspecialchars($p['description']) ?></td>
                         <td>
-                            <!-- Form sửa nhanh nhỏ gọn -->
                             <button onclick="document.getElementById('edit-<?= $p['id'] ?>').style.display='block'" class="btn">Sửa</button>
                             <a href="admin_dashboard.php?delete_product=<?= $p['id'] ?>" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Xóa</a>
 

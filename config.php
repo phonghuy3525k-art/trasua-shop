@@ -1,13 +1,13 @@
 <?php
 $host = 'localhost';
-$db   = 'trasua_shop';
-$user = 'root';
-$pass = '';
+$dbname = 'trasua_shop';
+$username = 'root';
+$password = ''; // XAMPP mặc định để trống
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (\PDOException $e) {
-    die("Kết nối thất bại: " . $e->getMessage());
+} catch (PDOException $e) {
+    die("Lỗi kết nối cơ sở dữ liệu: " . $e->getMessage());
 }
 ?>

@@ -16,14 +16,15 @@ CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
+    description TEXT,
     image VARCHAR(255) NOT NULL
 );
 
-INSERT INTO products (name, price, image) VALUES 
-('Trà sữa truyền thống', 25000, 'https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500'),
-('Trà sữa Matcha', 30000, 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=500'),
-('Trà sữa khoai môn', 28000, 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500'),
-('Hồng trà kem cheese', 35000, 'https://images.unsplash.com/photo-1525385133512-2f3bdd039a54?w=500')
+INSERT INTO products (name, price, description, image) VALUES 
+('Trà sữa truyền thống', 25000, 'Trà sữa thơm béo vị truyền thống kèm trân châu đen.', 'https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500'),
+('Trà sữa Matcha', 30000, 'Matcha Nhật Bản đậm đà kết hợp sữa tươi thơm ngon.', 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=500'),
+('Trà sữa khoai môn', 28000, 'Hương vị khoai môn bùi béo tự nhiên.', 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500'),
+('Hồng trà kem cheese', 35000, 'Hồng trà thanh mát phủ lớp kem cheese mặn ngọt béo ngậy.', 'https://images.unsplash.com/photo-1525385133512-2f3bdd039a54?w=500')
 ON DUPLICATE KEY UPDATE name=name;
 
 -- Bảng Đơn hàng

@@ -23,7 +23,7 @@ if ($phone) {
         .search-box input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
         .search-box button { background: #ff7675; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
         table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        table th, table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        table th, table td { border: 1px solid #ddd; padding: 10px; text-align: left; font-size: 14px; }
         table th { background: #f8f9fa; }
     </style>
 </head>

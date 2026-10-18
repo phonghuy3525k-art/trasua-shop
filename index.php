@@ -87,6 +87,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; }
         .product-card h3 { margin: 10px 0 5px; font-size: 16px; }
         .product-card p { color: #e84393; font-weight: bold; margin-bottom: 10px; }
+        .product-card small { color: #666; display: block; margin-bottom: 10px; height: 35px; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         table th, table td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 14px; }
         .alert { background: #55efc4; color: #00b894; padding: 10px; margin-bottom: 15px; border-radius: 4px; }
@@ -119,7 +120,8 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="product-card">
                         <img src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                         <h3><?= htmlspecialchars($p['name']) ?></h3>
-                        <p><?php echo number_format($p['price']); ?> đ</p>
+                        <small><?= htmlspecialchars($p['description']) ?></small>
+                        <p><?= number_format($p['price']) ?> đ</p>
                         <form method="POST">
                             <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
                             <input type="hidden" name="product_name" value="<?= htmlspecialchars($p['name']) ?>">
